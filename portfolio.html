@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work — Nova Digital | Portfolio</title>
+<meta name="description" content="See the websites Nova Digital has built for local businesses. Restaurants, barbershops, dental offices, real estate, gyms, and law firms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --bg-card-hover: #334155;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #FF6B6B;
+  --accent-hover: #ff5252;
+  --accent-glow: rgba(255, 107, 107, 0.3);
+  --blue: #3B82F6;
+  --blue-hover: #2563eb;
+  --blue-glow: rgba(59, 130, 246, 0.3);
+  --gradient-accent: linear-gradient(135deg, #FF6B6B, #3B82F6);
+  --gradient-bg: linear-gradient(180deg, #0f172a 0%, #1a1f3a 50%, #0f172a 100%);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(255, 255, 255, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 40px rgba(255, 107, 107, 0.15);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --section-padding: clamp(80px, 12vw, 140px) clamp(20px, 5vw, 80px);
+  --max-width: 1200px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button, input, textarea { font-family: inherit; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-blue {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 4px 20px var(--blue-glow);
+}
+
+.btn-blue:hover {
+  background: var(--blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--blue-glow);
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-normal);
+  background: transparent;
+}
+
+.nav.scrolled {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 40px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.nav-logo .logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--gradient-accent);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width var(--transition-normal);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  padding: 10px 24px !important;
+  font-size: 0.85rem !important;
+}
+
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all var(--transition-normal);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.mobile-menu a:hover {
+  color: var(--text-primary);
+}
+
+.mobile-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(140px, 20vw, 200px) clamp(20px, 5vw, 80px) clamp(60px, 8vw, 100px);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-bg);
+  z-index: 0;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-content .eyebrow {
+  margin-bottom: 24px;
+}
+
+.hero-content .section-title {
+  margin-bottom: 24px;
+}
+
+.hero-content .section-subtitle {
+  margin: 0 auto 40px;
+  max-width: 600px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   PORTFOLIO GRID
+   ============================================ */
+.portfolio-section {
+  padding: var(--section-padding);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 20px;
+}
+
+.portfolio-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.portfolio-screenshot {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-screenshot .screenshot-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: transform var(--transition-smooth);
+}
+
+.portfolio-card:hover .screenshot-inner {
+  transform: scale(1.05);
+}
+
+.screenshot-icon {
+  font-size: 2.5rem;
+  opacity: 0.9;
+}
+
+.screenshot-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.portfolio-body {
+  padding: 24px;
+}
+
+.portfolio-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.portfolio-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.portfolio-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.portfolio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: all var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.portfolio-btn:hover {
+  gap: 10px;
+  color: var(--accent-hover);
+}
+
+.portfolio-btn svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.portfolio-btn:hover svg {
+  transform: translateX(2px);
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+.cta-section {
+  padding: var(--section-padding);
+  text-align: center;
+}
+
+.cta-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: clamp(48px, 8vw, 80px) clamp(24px, 5vw, 60px);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 1px;
+  background: var(--gradient-accent);
+}
+
+.cta-box .section-title {
+  margin-bottom: 16px;
+}
+
+.cta-box .section-subtitle {
+  margin: 0 auto 36px;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  padding: 40px clamp(20px, 5vw, 80px);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer a {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer a:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: flex; }
+  .nav { padding: 16px 24px; }
+  .nav.scrolled { padding: 12px 24px; }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav class="nav" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">N</div>
+    Nova Digital
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="index.html#contact" class="btn btn-primary nav-cta">Get Started</a></li>
+  </ul>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+  <a href="index.html" class="mobile-link">Home</a>
+  <a href="index.html#services" class="mobile-link">Services</a>
+  <a href="index.html#pricing" class="mobile-link">Pricing</a>
+  <a href="index.html#faq" class="mobile-link">FAQ</a>
+  <a href="index.html#contact" class="btn btn-primary">Get Started</a>
+</div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+  </div>
+  <div class="hero-content reveal">
+    <span class="eyebrow">Portfolio</span>
+    <h1 class="section-title">Our Work</h1>
+    <p class="section-subtitle">Websites that convert visitors into customers. Every project is built for speed, SEO, and results.</p>
+    <div class="hero-actions">
+      <a href="index.html#contact" class="btn btn-primary">Start Your Project</a>
+      <a href="index.html#pricing" class="btn btn-secondary">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PORTFOLIO GRID
+     ============================================ -->
+<section class="portfolio-section">
+  <div class="container">
+    <div class="portfolio-grid">
+
+      <!-- 1. Bella's Italian Kitchen -->
+      <div class="portfolio-card reveal stagger-1">
+        <div class="portfolio-screenshot" style="background: linear-gradient(135deg, #1a1206 0%, #3d2b0f 40%, #c9972e 100%);">
+          <div class="screenshot-inner">
+            <span class="screenshot-icon">🍝</span>
+            <span class="screenshot-label" style="color: #c9972e;">Bella's Italian Kitchen</span>
+          </div>
+        </div>
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Restaurant</span>
+          <h3 class="portfolio-name">Bella's Italian Kitchen</h3>
+          <p class="portfolio-desc">Warm, inviting site with online menu, reservation system, and photo gallery. Online orders increased 40% in the first month.</p>
+          <button class="portfolio-btn" onclick="alert('Demo coming soon!')">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <!-- 2. Elite Cuts Barbershop -->
+      <div class="portfolio-card reveal stagger-2">
+        <div class="portfolio-screenshot" style="background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 40%, #b8860b 100%);">
+          <div class="screenshot-inner">
+            <span class="screenshot-icon">💈</span>
+            <span class="screenshot-label" style="color: #b8860b;">Elite Cuts Barbershop</span>
+          </div>
+        </div>
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Barbershop</span>
+          <h3 class="portfolio-name">Elite Cuts Barbershop</h3>
+          <p class="portfolio-desc">Bold, masculine design with online booking integration. Appointments doubled within six weeks of launch.</p>
+          <button class="portfolio-btn" onclick="alert('Demo coming soon!')">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <!-- 3. Bright Smile Dental -->
+      <div class="portfolio-card reveal stagger-3">
+        <div class="portfolio-screenshot" style="background: linear-gradient(135deg, #e8f4fd 0%, #bde0fe 40%, #2196F3 100%);">
+          <div class="screenshot-inner">
+            <span class="screenshot-icon">🦷</span>
+            <span class="screenshot-label" style="color: #1565C0;">Bright Smile Dental</span>
+          </div>
+        </div>
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Dental</span>
+          <h3 class="portfolio-name">Bright Smile Dental</h3>
+          <p class="portfolio-desc">Clean, trustworthy design with patient portal, service pages, and insurance info. New patient inquiries up 55%.</p>
+          <button class="portfolio-btn" onclick="alert('Demo coming soon!')">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <!-- 4. Premier Realty -->
+      <div class="portfolio-card reveal stagger-4">
+        <div class="portfolio-screenshot" style="background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 40%, #c5a44e 100%);">
+          <div class="screenshot-inner">
+            <span class="screenshot-icon">🏠</span>
+            <span class="screenshot-label" style="color: #c5a44e;">Premier Realty</span>
+          </div>
+        </div>
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Real Estate</span>
+          <h3 class="portfolio-name">Premier Realty</h3>
+          <p class="portfolio-desc">Luxury property showcase with listing search, agent profiles, and virtual tour integration. Lead generation up 70%.</p>
+          <button class="portfolio-btn" onclick="alert('Demo coming soon!')">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <!-- 5. Iron Peak Fitness -->
+      <div class="portfolio-card reveal stagger-5">
+        <div class="portfolio-screenshot" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a0505 40%, #d32f2f 100%);">
+          <div class="screenshot-inner">
+            <span class="screenshot-icon">🏋️</span>
+            <span class="screenshot-label" style="color: #ef5350;">Iron Peak Fitness</span>
+          </div>
+        </div>
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Gym / Fitness</span>
+          <h3 class="portfolio-name">Iron Peak Fitness</h3>
+          <p class="portfolio-desc">High-energy design with class schedules, membership plans, and trainer bios. Membership sign-ups increased 35%.</p>
+          <button class="portfolio-btn" onclick="alert('Demo coming soon!')">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+      <!-- 6. Patterson & Associates -->
+      <div class="portfolio-card reveal stagger-6">
+        <div class="portfolio-screenshot" style="background: linear-gradient(135deg, #0a1628 0%, #152238 40%, #c5a44e 100%);">
+          <div class="screenshot-inner">
+            <span class="screenshot-icon">⚖️</span>
+            <span class="screenshot-label" style="color: #c5a44e;">Patterson & Associates</span>
+          </div>
+        </div>
+        <div class="portfolio-body">
+          <span class="portfolio-tag">Law Firm</span>
+          <h3 class="portfolio-name">Patterson & Associates</h3>
+          <p class="portfolio-desc">Authoritative, professional site with practice area pages, attorney profiles, and case results. Consultations up 60%.</p>
+          <button class="portfolio-btn" onclick="alert('Demo coming soon!')">View Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA
+     ============================================ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <span class="eyebrow">Let's Build Yours</span>
+      <h2 class="section-title">Ready for yours?</h2>
+      <p class="section-subtitle">Get started in 48 hours. Your website, designed and launched faster than you thought possible.</p>
+      <div class="cta-actions">
+        <a href="index.html#contact" class="btn btn-primary">Get Started Now</a>
+        <a href="index.html#pricing" class="btn btn-secondary">See Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <p>&copy; 2026 <a href="index.html">Nova Digital</a>. All rights reserved.</p>
+</footer>
+
+<!-- ============================================
+     SCRIPTS
+     ============================================ -->
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+// Start scrolled since we're on a subpage
+navbar.classList.add('scrolled');
+
+// Mobile menu
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+
+mobileToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+// Scroll reveal
+const revealElements = document.querySelectorAll('.reveal, .reveal-scale');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+revealElements.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
