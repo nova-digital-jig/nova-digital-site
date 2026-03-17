@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova Digital — Client Intake Form</title>
+<meta name="description" content="Tell us about your business and we'll build you a website that brings customers. Fill out our quick intake form to get started.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #FF6B6B;
+  --accent-hover: #ff5252;
+  --accent-glow: rgba(255, 107, 107, 0.3);
+  --blue: #3B82F6;
+  --blue-hover: #2563eb;
+  --blue-glow: rgba(59, 130, 246, 0.3);
+  --gradient-accent: linear-gradient(135deg, #FF6B6B, #3B82F6);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(255, 255, 255, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.5);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============================================
+   NAV
+   ============================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 40px;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.logo span {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   PAGE
+   ============================================ */
+.page {
+  padding: clamp(120px, 15vw, 180px) clamp(20px, 5vw, 80px) clamp(60px, 8vw, 100px);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.page-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.page-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.page-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* ============================================
+   FORM
+   ============================================ */
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 5vw, 48px);
+  box-shadow: var(--shadow-lg);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.form-label .required {
+  color: var(--accent);
+  margin-left: 2px;
+}
+
+.form-label .optional {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-glow);
+}
+
+.form-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.form-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 16px 32px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  letter-spacing: 0.01em;
+}
+
+.btn-submit:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 0 30px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ============================================
+   SUCCESS
+   ============================================ */
+.success-message {
+  display: none;
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.success-message.visible {
+  display: block;
+  animation: fadeInUp 0.5s ease;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px;
+  background: var(--gradient-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-icon svg {
+  width: 36px;
+  height: 36px;
+  stroke: #fff;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.success-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.success-text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto 32px;
+}
+
+.btn-back {
+  display: inline-block;
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.btn-back:hover {
+  border-color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  padding: 32px clamp(20px, 5vw, 80px);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  .nav {
+    padding: 16px 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: auto;
+  }
+
+  .form-card {
+    padding: 24px 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Nova <span>Digital</span></a>
+    <a href="index.html" class="nav-link">&larr; Back to Home</a>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<main class="page">
+  <p class="page-eyebrow">Get Started</p>
+  <h1 class="page-title">Tell Us About Your Business</h1>
+  <p class="page-subtitle">Fill out the form below and we'll get back to you within 24 hours with a plan tailored to your goals.</p>
+
+  <div class="form-card">
+    <!-- FORM -->
+    <form id="intakeForm" class="form-grid" novalidate>
+
+      <div class="form-group">
+        <label class="form-label" for="businessName">Business Name <span class="required">*</span></label>
+        <input class="form-input" type="text" id="businessName" name="businessName" placeholder="e.g. Joe's Pizza" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="ownerName">Owner Name <span class="required">*</span></label>
+        <input class="form-input" type="text" id="ownerName" name="ownerName" placeholder="e.g. Joe Smith" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email <span class="required">*</span></label>
+        <input class="form-input" type="email" id="email" name="email" placeholder="joe@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="phone">Phone <span class="required">*</span></label>
+        <input class="form-input" type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="businessType">Business Type <span class="required">*</span></label>
+        <select class="form-select" id="businessType" name="businessType" required>
+          <option value="" disabled selected>Select your industry</option>
+          <option value="Restaurant">Restaurant</option>
+          <option value="Retail">Retail</option>
+          <option value="Professional Services">Professional Services</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Real Estate">Real Estate</option>
+          <option value="Fitness">Fitness</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="currentWebsite">Current Website <span class="optional">(optional)</span></label>
+        <input class="form-input" type="url" id="currentWebsite" name="currentWebsite" placeholder="https://yoursite.com">
+      </div>
+
+      <div class="form-group full-width">
+        <label class="form-label" for="needs">What Do You Need? <span class="required">*</span></label>
+        <textarea class="form-textarea" id="needs" name="needs" placeholder="Tell us about your goals — a new website, redesign, online ordering, booking system, etc." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="budget">Budget Range <span class="required">*</span></label>
+        <select class="form-select" id="budget" name="budget" required>
+          <option value="" disabled selected>Select your budget</option>
+          <option value="Under $500">Under $500</option>
+          <option value="$500 – $1,000">$500 – $1,000</option>
+          <option value="$1,000 – $2,500">$1,000 – $2,500</option>
+          <option value="$2,500+">$2,500+</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="timeline">Timeline <span class="required">*</span></label>
+        <select class="form-select" id="timeline" name="timeline" required>
+          <option value="" disabled selected>Select timeline</option>
+          <option value="ASAP">ASAP</option>
+          <option value="1–2 Weeks">1–2 Weeks</option>
+          <option value="1 Month">1 Month</option>
+          <option value="Flexible">Flexible</option>
+        </select>
+      </div>
+
+      <div class="form-submit">
+        <button class="btn-submit" type="submit">Submit Intake Form</button>
+      </div>
+    </form>
+
+    <!-- SUCCESS -->
+    <div class="success-message" id="successMessage">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2 class="success-title">We Got Your Info!</h2>
+      <p class="success-text">Thanks for reaching out. A member of our team will review your details and get back to you within 24 hours.</p>
+      <a href="index.html" class="btn-back">Back to Home</a>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  &copy; 2026 Nova Digital. All rights reserved.
+</footer>
+
+<script>
+(function() {
+  const form = document.getElementById('intakeForm');
+  const success = document.getElementById('successMessage');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Basic validation
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+
+    required.forEach(function(field) {
+      if (!field.value.trim()) {
+        valid = false;
+        field.style.borderColor = 'var(--accent)';
+      } else {
+        field.style.borderColor = '';
+      }
+    });
+
+    // Email check
+    const email = form.querySelector('#email');
+    if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      valid = false;
+      email.style.borderColor = 'var(--accent)';
+    }
+
+    if (!valid) return;
+
+    // Hide form, show success
+    form.style.display = 'none';
+    success.classList.add('visible');
+  });
+
+  // Clear error styling on input
+  form.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(function(el) {
+    el.addEventListener('input', function() {
+      this.style.borderColor = '';
+    });
+    el.addEventListener('change', function() {
+      this.style.borderColor = '';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
